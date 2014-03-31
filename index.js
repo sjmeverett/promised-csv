@@ -81,7 +81,13 @@ CsvParser.prototype.readPromises = function (path, fn) {
 
 
 CsvParser.prototype.readSequence = function (path, fn) {
-  return this.read(path, fn).then(function (p) { return p.reduce(Q.when, Q()); });
+  var wrapped = function (value, i) {
+    return function () {
+      return fn(value, i);
+    };
+  };
+
+  return this.read(path, wrapped).then(function (p) { return p.reduce(Q.when, Q()); });
 }
 
 
