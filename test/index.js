@@ -71,11 +71,13 @@ describe('CsvReader', function () {
 
     it('should accept a reduce function and an initial value, and resolve to the reduced results', function (done) {
       var reader = new CsvReader();
-      debugger;
+
       reader
-        .read('test/ok.csv', function (acc, data) { return acc + parseInt(data[0]); }, 0)
-        .then(function (val) {
-          assert.equal(6, val);
+        .read('test/dict.csv', function (dict, data) { dict[data[0]] = data[1]; return dict; }, {})
+        .then(function (dict) {
+          assert.equal('value1', dict.key1);
+          assert.equal('value2', dict.key2);
+          assert.equal('value3', dict.key3);
           done();
         })
         .done();

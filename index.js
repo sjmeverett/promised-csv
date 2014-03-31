@@ -44,13 +44,13 @@ CsvParser.prototype.read = function (path, fn, value) {
 
         if (typeof fn === 'function') {
           if (typeof value === 'undefined') {
-            var r = fn(lines[i], i);
+            var r = fn(a, i);
 
             if (!_this.discardNulls || (r != null && typeof r !== 'undefined'))
               result.push(r);
           }
           else {
-            value = fn(value, lines[i], i);
+            value = fn(value, a, i);
           }
         }
 
