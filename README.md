@@ -52,7 +52,8 @@ Using the Promise interface
 
 The `read()` method returns a promise, and there are a few ways that you could use this.
 
-### `read(file, [resolve value])`
+### Using events with promises
+`read(file, [resolve value])`
 
 First of all, you might want to process your data in the `row` event.  If you pass an extra value to the `read()` method, it will be passed to the `then` function.  Otherwise, it won't get passed anything.
 
