@@ -1,0 +1,27 @@
+{
+  "name": "promised-csv",
+  "version": "1.0.0",
+  "description": "A simple CSV parser with promise and event interface.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stewartml/promised-csv"
+  },
+  "keywords": [
+    "csv",
+    "parser",
+    "promises"
+  ],
+  "author": "Stewart MacKenzie-Leigh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stewartml/promised-csv/issues"
+  },
+  "homepage": "https://github.com/stewartml/promised-csv",
+  "dependencies": {
+    "q": "^1.0.1"
+  }
+}
