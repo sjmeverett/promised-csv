@@ -17,6 +17,7 @@ util.inherits(CsvParser, EventEmitter);
 CsvParser.prototype.read = function (path, fn, value) {
   var deferred = Q.defer();
   var _this = this;
+  var map = typeof value === 'undefined';
 
   fs.readFile(path, 'utf-8', function (err, data) {
     if (err) {
@@ -43,10 +44,10 @@ CsvParser.prototype.read = function (path, fn, value) {
         _this.emit('row', a);
 
         if (typeof fn === 'function') {
-          if (typeof value === 'undefined') {
+          if (map) {
             var r = fn(a, i);
 
-            if (!_this.discardNulls || (r != null && typeof r !== 'undefined'))
+            if (!_this.discardNulls || (r !== null && typeof r !== 'undefined'))
               result.push(r);
           }
           else {

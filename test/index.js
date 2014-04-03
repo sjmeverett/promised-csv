@@ -73,13 +73,27 @@ describe('CsvReader', function () {
       var reader = new CsvReader();
 
       reader
-        .read('test/dict.csv', function (dict, data) { dict[data[0]] = data[1]; return dict; }, {})
+        .read('test/dict.csv', function (dict, data) {
+          dict[data[0]] = data[1];
+          return dict;
+        }, {})
         .then(function (dict) {
           assert.equal('value1', dict.key1);
           assert.equal('value2', dict.key2);
           assert.equal('value3', dict.key3);
           done();
         })
+        .done();
+    });
+
+    it('shouldn\'t switch to map if the reduce function returns undefined', function (done) {
+      var reader = new CsvReader();
+
+      reader
+        .read('test/dict.csv', function (dict, data) {
+          assert.ok(Array.isArray(data));
+        }, {})
+        .then(function () { done(); })
         .done();
     });
 
