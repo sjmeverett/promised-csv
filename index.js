@@ -77,7 +77,7 @@ CsvParser.prototype.read = function (path, fn, value) {
 
 
 CsvParser.prototype.readPromises = function (path, fn) {
-  return this.read(path, fn).then(Q.all);
+  return Q.all(this.read(path, fn));
 };
 
 
