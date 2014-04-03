@@ -35,7 +35,7 @@ CsvParser.prototype.read = function (path, fn, value) {
       var a = CsvParser.csvToArray(lines[i]);
 
       if (a === null) {
-        var err = new Error('Line ' + i + ' is not valid.');
+        var err = new Error(path + ': line ' + i + ' is not valid.');
         _this.emit('error', err);
         deferred.reject(err);
         break;
